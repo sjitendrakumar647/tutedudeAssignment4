@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laundry Services Web App</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">LaundryMart</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#quality">Quality</a></li>
+      <li><a href="#book">Book Now</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+    <div class="user">Hello, Jitendra</div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-left">
+      <h1>Fast & Reliable Laundry Service</h1>
+      <p>Book your laundry with us and enjoy hassle-free washing, ironing, and delivery. Fresh clothes, fresh life!</p>
+      <button onclick="scrollToBook()">Book a Service Today</button>
+    </div>
+    <div class="hero-right">
+      <img style="height: fit-content;" src="https://static.vecteezy.com/system/resources/previews/007/152/965/non_2x/cartoon-smiling-washing-machine-character-vector.jpg" alt="Laundry">
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Washing and Drying</li>
+      <li>Ironing and Folding</li>
+      <li>Dry Cleaning</li>
+      <li>Stain Removal</li>
+      <li>Express Services</li>
+      <li>Special Garment Care</li>
+    </ul>
+  </section>
+
+  <!-- Quality Section -->
+  <section class="quality" id="quality">
+    <h2>Why Choose Us?</h2>
+    <ul>
+      <li>✅ Premium quality services</li>
+      <li>✅ Quick support</li>
+      <li>✅ Timely delivery</li>
+      <li>✅ Affordable prices</li>
+    </ul>
+  </section>
+
+  <!-- Booking Section -->
+<section class="booking" id="book">
+  <h2>Book Now</h2>
+  <div class="booking-container">
+
+    <!-- Left: Services with prices -->
+    <div class="services-list">
+      <h3>Available Services</h3>
+      <table style="width:100%;" border="1" cellspacing="0" cellpadding="5">
+        <tr>
+          <th>Service</th>
+          <th>Price (₹)</th>
+        </tr>
+        <tr>
+          <td>Dry Cleaning</td>
+          <td style="color:blue;">100</td>
+          <td>
+            <button style="background-color: green;" onclick="addItem('Dry Cleaning', 100)">Add</button>
+          <button style="background-color: red;" onclick="removeItem('Dry Cleaning')">Remove</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Wash & Fold</td>
+          <td style="color:blue;">150</td>
+          <td>
+          <button style="background-color: green;" onclick="addItem('Wash & Fold', 150)">Add</button>
+          <button style="background-color: red;" onclick="removeItem('Wash & Fold')">Remove</button>
+          </td>
+        </tr>
+        <tr>
+            <td>Ironing and Folding</td>
+            <td style="color:blue;">80</td>
+            <td>
+              <button style="background-color: green;" onclick="addItem('Ironing and Folding', 80)">Add</button>
+              <button style="background-color: red;" onclick="removeItem('Ironing and Folding')">Remove</button>
+            </td>  
+        </tr>
+        <tr>
+            <td>Wedding Dress Cleaning</td>
+            <td style="color:blue;">1500</td>
+            <td>
+              <button style="background-color: green;" onclick="addItem('Wedding Dress Cleaning', 1500)">Add</button>
+              <button style="background-color: red;" onclick="removeItem('Wedding Dress Cleaning')">Remove</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Stain Removal</td>
+            <td style="color:blue;">200</td>
+            <td>
+              <button style="background-color: green;" onclick="addItem('Stain Removal', 200)">Add</button>
+              <button style="background-color: red;" onclick="removeItem('Stain Removal')">Remove</button>
+            </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Right: Form + Cart -->
+    <div class="booking-form">
+      <!-- Cart -->
+      <div class="cart">
+        <h3>Selected Items</h3>
+        <table id="cart-table" border="1" cellspacing="0" cellpadding="5">
+          <thead>
+            <tr>
+              <th>Sl. No</th>
+              <th>Service</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody id="cart-body"></tbody>
+        </table>
+        <p id="total">Total: ₹0</p>
+      </div>
+
+      <!-- Booking Form -->
+      <form id="booking-form">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <button type="submit">Book Now</button>
+      </form>
+
+      <p id="confirmation" style="display:none; color:green; margin-top:10px;">
+        ✅ Email sent successfully! Thank you for booking the service. We will get back to you soon!
+      </p>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Newsletter Section -->
+  <section class="newsletter">
+    <h2>Subscribe to Our Newsletter</h2>
+    <form id="newsletter-form">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="footer-logo">LaundryMart</div>
+    <div class="footer-links">
+      <a href="#about">About Us</a>
+      <a href="#faq">FAQs</a>
+      <a href="#terms">Terms of Service</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+    <div class="social">
+      <a href="#">🌐 Facebook</a> |
+      <a href="#">📷 Instagram</a> |
+      <a href="#">🐦 Twitter</a>
+    </div>
+    <p>© 2025 LaundryMart. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Handle booking form submission (Demo)
+    document.getElementById("booking-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      document.getElementById("confirmation").style.display = "block";
+      this.reset();
+    });
+
+    // Handle newsletter subscription
+    document.getElementById("newsletter-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      alert("Thank you for subscribing to our newsletter!");
+      this.reset();
+    });
+
+    //scrolling effect
+    function scrollToBook(){
+        document.getElementById("book").scrollIntoView({behavior: 'smooth'});
+    }
+    
+    document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        const section = document.querySelector(href);
+        if (section) {
+          section.scrollIntoView({behavior: 'smooth'});
+        }
+      }
+    });
+  });
+  </script>
+    
+</body>
+</html>
