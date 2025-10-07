@@ -6,6 +6,8 @@
   <title>Laundry Services Web App</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js"></script>
+  <script>
+  </script>
 </head>
 <body>
 
@@ -66,50 +68,10 @@
     <!-- Left: Services with prices -->
     <div class="services-list">
       <h3>Available Services</h3>
-      <table style="width:100%;" border="1" cellspacing="0" cellpadding="5">
+      <table id="name-table" style="width:100%;" border="1" cellspacing="0" cellpadding="5">
         <tr>
           <th>Service</th>
           <th>Price (₹)</th>
-        </tr>
-        <tr>
-          <td>Dry Cleaning</td>
-          <td style="color:blue;">100</td>
-          <td>
-            <button style="background-color: green;" onclick="addItem('Dry Cleaning', 100)">Add</button>
-          <button style="background-color: red;" onclick="removeItem('Dry Cleaning')">Remove</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Wash & Fold</td>
-          <td style="color:blue;">150</td>
-          <td>
-          <button style="background-color: green;" onclick="addItem('Wash & Fold', 150)">Add</button>
-          <button style="background-color: red;" onclick="removeItem('Wash & Fold')">Remove</button>
-          </td>
-        </tr>
-        <tr>
-            <td>Ironing and Folding</td>
-            <td style="color:blue;">80</td>
-            <td>
-              <button style="background-color: green;" onclick="addItem('Ironing and Folding', 80)">Add</button>
-              <button style="background-color: red;" onclick="removeItem('Ironing and Folding')">Remove</button>
-            </td>  
-        </tr>
-        <tr>
-            <td>Wedding Dress Cleaning</td>
-            <td style="color:blue;">1500</td>
-            <td>
-              <button style="background-color: green;" onclick="addItem('Wedding Dress Cleaning', 1500)">Add</button>
-              <button style="background-color: red;" onclick="removeItem('Wedding Dress Cleaning')">Remove</button>
-            </td>
-        </tr>
-        <tr>
-            <td>Stain Removal</td>
-            <td style="color:blue;">200</td>
-            <td>
-              <button style="background-color: green;" onclick="addItem('Stain Removal', 200)">Add</button>
-              <button style="background-color: red;" onclick="removeItem('Stain Removal')">Remove</button>
-            </td>
         </tr>
       </table>
     </div>
@@ -183,6 +145,21 @@
 
   <!-- JavaScript -->
   <script>
+        const name = ["Laundry", "LaundryMart", "WashHub", "FreshFold", "CleanWave", "SpinCycle", "EcoWash", "LaundryExpress", "PureCare Laundry", "BrightWash"];
+        const Price = [100, 150, 80, 1500, 200,350,120,90,250,400];
+const nameTableBody = document.querySelector("#name-table tbody");
+name.forEach((n, i) => {
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>${n}</td>
+    <td style="color:blue;">${Price[i]}</td>
+    <td>
+      <button style="background-color:green; color:white;" id="add-${i}" onclick="document.getElementById('add-${i}').style.display='none'; document.getElementById('remove-${i}').style.display='inline'; addItem('${n}', ${Price[i]})">Add</button>
+      <button style="display:none; background-color:red; color:white;" id="remove-${i}" onclick="document.getElementById('remove-${i}').style.display='none';document.getElementById('add-${i}').style.display='inline'; removeItem('${n}')">Remove</button>
+    </td>
+    `;
+  nameTableBody.appendChild(row);
+});
     // Handle booking form submission (Demo)
     document.getElementById("booking-form").addEventListener("submit", function(event) {
       event.preventDefault();
