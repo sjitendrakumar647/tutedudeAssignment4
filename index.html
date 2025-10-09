@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Laundry Services Web App</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
+    (function () {
+      emailjs.init("P43XcNEmawKKKWSud"); // Replace with your Email.js Public Key
+    })();
   </script>
 </head>
+
 <body>
 
   <!-- Navbar -->
@@ -32,7 +38,9 @@
       <button onclick="scrollToBook()">Book a Service Today</button>
     </div>
     <div class="hero-right">
-      <img style="height: fit-content;" src="https://static.vecteezy.com/system/resources/previews/007/152/965/non_2x/cartoon-smiling-washing-machine-character-vector.jpg" alt="Laundry">
+      <img style="height: fit-content;"
+        src="https://static.vecteezy.com/system/resources/previews/007/152/965/non_2x/cartoon-smiling-washing-machine-character-vector.jpg"
+        alt="Laundry">
     </div>
   </section>
 
@@ -61,59 +69,60 @@
   </section>
 
   <!-- Booking Section -->
-<section class="booking" id="book">
-  <h2>Book Now</h2>
-  <div class="booking-container">
+  <section class="booking" id="book">
+    <h2>Book Now</h2>
+    <div class="booking-container">
 
-    <!-- Left: Services with prices -->
-    <div class="services-list">
-      <h3>Available Services</h3>
-      <table id="name-table" style="width:100%;" border="1" cellspacing="0" cellpadding="5">
-        <tr>
-          <th>Service</th>
-          <th>Price (₹)</th>
-        </tr>
-      </table>
-    </div>
-
-    <!-- Right: Form + Cart -->
-    <div class="booking-form">
-      <!-- Cart -->
-      <div class="cart">
-        <h3>Selected Items</h3>
-        <table id="cart-table" border="1" cellspacing="0" cellpadding="5">
-          <thead>
-            <tr>
-              <th>Sl. No</th>
-              <th>Service</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody id="cart-body"></tbody>
+      <!-- Left: Services with prices -->
+      <div class="services-list">
+        <h3>Available Services</h3>
+        <table id="name-table" style="width:100%;" border="1" cellspacing="0" cellpadding="5">
+          <tr>
+            <th>Service</th>
+            <th>Price (₹)</th>
+          </tr>
         </table>
-        <p id="total">Total: ₹0</p>
       </div>
 
-      <!-- Booking Form -->
-      <form id="booking-form">
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" name="name" required>
+      <!-- Right: Form + Cart -->
+      <div class="booking-form">
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
 
-        <label for="phone">Phone:</label>
-        <input type="tel" id="phone" name="phone" required>
+        <!-- Booking Form -->
+        <form id="booking-form">
+          <!-- Cart -->
+          <div class="cart">
+            <h3>Selected Items</h3>
+            <table id="cart-table" border="1" cellspacing="0" cellpadding="5">
+              <thead>
+                <tr>
+                  <th>Sl. No</th>
+                  <th>Service</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody id="cart-body"></tbody>
+            </table>
+            <p id="total">Total: ₹0</p>
+          </div>
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" name="name" required>
 
-        <button type="submit">Book Now</button>
-      </form>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
 
-      <p id="confirmation" style="display:none; color:green; margin-top:10px;">
-        ✅ Email sent successfully! Thank you for booking the service. We will get back to you soon!
-      </p>
+          <label for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" required>
+
+          <button type="submit">Book Now</button>
+        </form>
+
+        <p id="confirmation" style="display:none; color:green; margin-top:10px;">
+          ✅ Email sent successfully! Thank you for booking the service. We will get back to you soon!
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
   <!-- Newsletter Section -->
@@ -145,12 +154,12 @@
 
   <!-- JavaScript -->
   <script>
-        const name = ["Laundry", "LaundryMart", "WashHub", "FreshFold", "CleanWave", "SpinCycle", "EcoWash", "LaundryExpress", "PureCare Laundry", "BrightWash"];
-        const Price = [100, 150, 80, 1500, 200,350,120,90,250,400];
-const nameTableBody = document.querySelector("#name-table tbody");
-name.forEach((n, i) => {
-  const row = document.createElement("tr");
-  row.innerHTML = `
+    const name = ["Laundry", "LaundryMart", "WashHub", "FreshFold", "CleanWave", "SpinCycle", "EcoWash", "LaundryExpress", "PureCare Laundry", "BrightWash"];
+    const Price = [100, 150, 80, 1500, 200, 350, 120, 90, 250, 400];
+    const nameTableBody = document.querySelector("#name-table tbody");
+    name.forEach((n, i) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
     <td>${n}</td>
     <td style="color:blue;">${Price[i]}</td>
     <td>
@@ -158,40 +167,91 @@ name.forEach((n, i) => {
       <button style="display:none; background-color:red; color:white;" id="remove-${i}" onclick="document.getElementById('remove-${i}').style.display='none';document.getElementById('add-${i}').style.display='inline'; removeItem('${n}')">Remove</button>
     </td>
     `;
-  nameTableBody.appendChild(row);
-});
-    // Handle booking form submission (Demo)
-    document.getElementById("booking-form").addEventListener("submit", function(event) {
+      nameTableBody.appendChild(row);
+    });
+    // Store selected items in an array
+    let cart = [];
+
+    function addItem(service, price) {
+      cart.push({ service, price });
+      renderCart();
+    }
+
+    function removeItem(service) {
+      cart = cart.filter(item => item.service !== service);
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartBody = document.getElementById("cart-body");
+      cartBody.innerHTML = "";
+      let total = 0;
+      cart.forEach((item, i) => {
+        total += item.price;
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${i + 1}</td><td>${item.service}</td><td>₹${item.price}</td>`;
+        cartBody.appendChild(row);
+      });
+      document.getElementById("total").textContent = `Total: ₹${total}`;
+    }
+
+    // Handle booking form submission
+    document.getElementById("booking-form").addEventListener("submit", function (event) {
       event.preventDefault();
-      document.getElementById("confirmation").style.display = "block";
-      this.reset();
+
+      // Prepare selected services and total
+      const selectedServices = cart.map(item => `${item.service} (₹${item.price})`).join(", ");
+      const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
+
+      const form = this;
+      const params = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        services: selectedServices,
+        total: `₹${totalAmount}`
+      };
+
+      // Send email with Email.js
+      emailjs.send("service_wmuz8ee", "template_647g5f8", params)
+        .then(function(response) {
+          document.getElementById("confirmation").style.display = "block";
+          form.reset();
+          cart = [];
+          renderCart();
+        }, function(error) {
+          alert("Failed to send email. Please try again.");
+          console.log(error);
+        });
+
     });
 
     // Handle newsletter subscription
-    document.getElementById("newsletter-form").addEventListener("submit", function(event) {
+    document.getElementById("newsletter-form").addEventListener("submit", function (event) {
       event.preventDefault();
       alert("Thank you for subscribing to our newsletter!");
       this.reset();
     });
 
     //scrolling effect
-    function scrollToBook(){
-        document.getElementById("book").scrollIntoView({behavior: 'smooth'});
+    function scrollToBook() {
+      document.getElementById("book").scrollIntoView({ behavior: 'smooth' });
     }
-    
+
     document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (href.startsWith('#')) {
-        e.preventDefault();
-        const section = document.querySelector(href);
-        if (section) {
-          section.scrollIntoView({behavior: 'smooth'});
+      link.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          const section = document.querySelector(href);
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+          }
         }
-      }
+      });
     });
-  });
   </script>
-    
+
 </body>
+
 </html>
