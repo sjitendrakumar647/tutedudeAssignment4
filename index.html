@@ -10,7 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
     (function () {
-      emailjs.init("P43XcNEmawKKKWSud"); // Replace with your Email.js Public Key
+      emailjs.init("P43XcNEmawKKKWSud");
     })();
   </script>
 </head>
@@ -23,18 +23,23 @@
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#quality">Quality</a></li>
       <li><a href="#book">Book Now</a></li>
+      <li><a href="#quality">Quality</a></li>
       <li><a href="#contact">Contact Us</a></li>
     </ul>
-    <div class="user">Hello, Jitendra</div>
+    <div class="user">Usename</div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="hero-left">
-      <h1>Fast & Reliable Laundry Service</h1>
-      <p>Book your laundry with us and enjoy hassle-free washing, ironing, and delivery. Fresh clothes, fresh life!</p>
+  <section class="" id="home">
+    <div class="hero">
+      <div class="hero-left">
+      <h1 class="h1">Revitalize Your Clothes with Expert</h1>
+      <h1>Laundry Service</h1>
+      <p>
+        From premium dry cleaning to swift wash and fold, we deliver care and convenience.
+        Schedule a pickup and rediscover the freshness of your clothes today!
+      </p>
       <button onclick="scrollToBook()">Book a Service Today</button>
     </div>
     <div class="hero-right">
@@ -42,58 +47,83 @@
         src="https://static.vecteezy.com/system/resources/previews/007/152/965/non_2x/cartoon-smiling-washing-machine-character-vector.jpg"
         alt="Laundry">
     </div>
-  </section>
-
-  <!-- Services Section -->
-  <section class="services" id="services">
-    <h2>Our Services</h2>
-    <ul>
-      <li>Washing and Drying</li>
-      <li>Ironing and Folding</li>
-      <li>Dry Cleaning</li>
-      <li>Stain Removal</li>
-      <li>Express Services</li>
-      <li>Special Garment Care</li>
-    </ul>
-  </section>
-
-  <!-- Quality Section -->
-  <section class="quality" id="quality">
-    <h2>Why Choose Us?</h2>
-    <ul>
-      <li>✅ Premium quality services</li>
-      <li>✅ Quick support</li>
-      <li>✅ Timely delivery</li>
-      <li>✅ Affordable prices</li>
-    </ul>
+    </div>
+    <divc= class="achievements">
+      <h1>Our Achievements</h1>
+      <h1>15+ <p>Laundry Services</p></h1>
+      <h1>240+ <p>Happy Customers</p></h1>
+      <h1>2+ Yrs <p>Experience</p></h1>
+    </div>
   </section>
 
   <!-- Booking Section -->
   <section class="booking" id="book">
-    <h2>Book Now</h2>
+    <h2 class="book">Book Now</h2>
     <div class="booking-container">
 
       <!-- Left: Services with prices -->
-      <div class="services-list">
-        <h3>Available Services</h3>
-        <table id="name-table" style="width:100%;" border="1" cellspacing="0" cellpadding="5">
-          <tr>
-            <th>Service</th>
-            <th>Price (₹)</th>
-          </tr>
+      <div class="services-list" id="services">
+        <h3>Our Services</h3>
+        <table id="name-table" style="width:100%; border: 2px solid; border-radius: 10px; box-shadow: 0 0 10px; " cellspacing="10" cellpadding="10">
+          <thead>
+            <tr><th>Service</th><th>Price (₹)</th><th>Action</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>👘Dry Cleaning</td><td style="color:blue;">&#8377; 100</td>
+              <td>
+                <button id="add-0" class="add" onclick="addItem('Dry Cleaning',100,0)">Add Item➕</button>
+                <button id="remove-0" class="remove" onclick="removeItem('Dry Cleaning',0)">Remove➖</button>
+              </td>
+            </tr>
+            <tr>
+              <td>🧼Wash & Fold</td><td style="color:blue;">&#8377; 80</td>
+              <td>
+                <button id="add-1" class="add" onclick="addItem('Wash & Fold',80,1)">Add Item➕</button>
+                <button id="remove-1" class="remove" onclick="removeItem('Wash & Fold',1)">Remove➖</button>
+              </td>
+            </tr>
+            <tr>
+              <td>🥌Ironing</td><td style="color:blue;">&#8377; 120</td>
+              <td>
+                <button id="add-2" class="add" onclick="addItem('Ironing',120,2)">Add Item➕</button>
+                <button id="remove-2" class="remove" onclick="removeItem('Ironing',2)">Remove➖</button>
+              </td>
+            </tr>
+            <tr>
+              <td>⭐Stain Removal</td><td style="color:blue;">&#8377; 250</td>
+              <td>
+                <button id="add-3" class="add" onclick="addItem('Stain Removal',250,3)">Add Item➕</button>
+                <button id="remove-3" class="remove" onclick="removeItem('Stain Removal',3)">Remove➖</button>
+              </td>
+            </tr>
+            <tr>
+              <td>🧤Leather & Suede Cleaning</td><td style="color:blue;">&#8377; 999</td>
+              <td>
+                <button id="add-4" class="add" onclick="addItem('Leather & Suede Cleaning',999,4)">Add Item➕</button>
+                <button id="remove-4" class="remove" onclick="removeItem('Leather & Suede Cleaning',4)">Remove➖</button>
+              </td>
+            </tr>
+            <tr>
+              <td>👗Weeding Dress Cleaning</td><td style="color:blue;">&#8377; 2800</td>
+              <td>
+                <button id="add-5" class="add" onclick="addItem('Weeding Dress Cleaning',2800,5)">Add Item➕</button>
+                <button id="remove-5" class="remove" onclick="removeItem('Weeding Dress Cleaning',5)">Remove➖</button>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
 
       <!-- Right: Form + Cart -->
-      <div class="booking-form">
-
-
+      <div class="booking-form" >
+        <h3>Selected Items</h3>
         <!-- Booking Form -->
-        <form id="booking-form">
+        <form id="booking-form" style="width:100%; border: 2px solid; border-radius: 10px; box-shadow: 0 0 10px; padding: 5px;">
           <!-- Cart -->
-          <div class="cart">
-            <h3>Selected Items</h3>
-            <table id="cart-table" border="1" cellspacing="0" cellpadding="5">
+          <div class="cart" >
+            
+            <table id="cart-table"  cellspacing="0" cellpadding="5">
               <thead>
                 <tr>
                   <th>Sl. No</th>
@@ -124,13 +154,57 @@
     </div>
   </section>
 
-
+  <section class="quality" id="quality">
+    <div class="content">
+      <div>
+        <img class="content-img" src="https://static.vecteezy.com/system/resources/previews/021/709/675/original/laundry-service-icon-vector.jpg" alt="">
+      </div>
+      <div><h1>Premium Service</h1>
+      <p>Elevate your wardrobe with our meticulous dry cleaning,
+          ensuring garments look and feel as good as new.</p>
+      </div>
+    </div>
+    <div class="content">
+      <div>
+        <img class="content-img" src="https://static.vecteezy.com/system/resources/previews/015/911/602/original/customer-support-icon-outline-style-vector.jpg" alt="customer support">
+      </div>
+      <div><h1>Quick Support</h1>
+        <p>We're committed to providing prompt solution to ensure your
+          experience is smooth and worry-free.
+        </p>
+      </div>
+    </div>
+    <div class="content">
+      <div>
+        <img class="content-img" src="https://toppng.com/public/uploads/preview/o-hassle-delivery-11563795945qwd1y8k2k1.png" alt="">
+      </div>
+      <div><h1>Hassel Free Delivery</h1>
+        <p>Enjoy seamless service with our convienient pickup and Delivery
+          options, tailored to your schedule.
+        </p>
+      </div>
+    </div>
+    <div class="content">
+      <div>
+        <img class="content-img" src="https://static.vecteezy.com/system/resources/previews/021/270/225/non_2x/affordable-pricing-icon-style-free-vector.jpg" alt="">
+      </div>
+      <div>
+        <h1>Affordable Price</h1>
+        <p>
+          Experience exceptional care without breaking the bank- our
+          Affordable prices make laundry day stress-free.
+        </p>
+      </div>
+    </div>
+  </section>
   <!-- Newsletter Section -->
   <section class="newsletter">
     <h2>Subscribe to Our Newsletter</h2>
     <form id="newsletter-form">
-      <input type="text" placeholder="Full Name" required>
+      <div class="form">
+        <input type="text" placeholder="Full Name" required>
       <input type="email" placeholder="Email Address" required>
+      </div>
       <button type="submit">Subscribe</button>
     </form>
   </section>
@@ -151,107 +225,24 @@
     </div>
     <p>© 2025 LaundryMart. All Rights Reserved.</p>
   </footer>
-
-  <!-- JavaScript -->
+  
   <script>
-    const name = ["Laundry", "LaundryMart", "WashHub", "FreshFold", "CleanWave", "SpinCycle", "EcoWash", "LaundryExpress", "PureCare Laundry", "BrightWash"];
-    const Price = [100, 150, 80, 1500, 200, 350, 120, 90, 250, 400];
-    const nameTableBody = document.querySelector("#name-table tbody");
-    name.forEach((n, i) => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-    <td>${n}</td>
-    <td style="color:blue;">${Price[i]}</td>
-    <td>
-      <button style="background-color:green; color:white;" id="add-${i}" onclick="document.getElementById('add-${i}').style.display='none'; document.getElementById('remove-${i}').style.display='inline'; addItem('${n}', ${Price[i]})">Add</button>
-      <button style="display:none; background-color:red; color:white;" id="remove-${i}" onclick="document.getElementById('remove-${i}').style.display='none';document.getElementById('add-${i}').style.display='inline'; removeItem('${n}')">Remove</button>
-    </td>
-    `;
-      nameTableBody.appendChild(row);
+  // --- Step 8: Smooth Scrolling ---
+  function scrollToBook() {
+    document.getElementById("book").scrollIntoView({ behavior: "smooth" });
+  }
+
+  // --- Step 9: Smooth Scroll for Navbar Links ---
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", e => {
+      const target = document.querySelector(link.getAttribute("href"));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth" });
+      }
     });
-    // Store selected items in an array
-    let cart = [];
-
-    function addItem(service, price) {
-      cart.push({ service, price });
-      renderCart();
-    }
-
-    function removeItem(service) {
-      cart = cart.filter(item => item.service !== service);
-      renderCart();
-    }
-
-    function renderCart() {
-      const cartBody = document.getElementById("cart-body");
-      cartBody.innerHTML = "";
-      let total = 0;
-      cart.forEach((item, i) => {
-        total += item.price;
-        const row = document.createElement("tr");
-        row.innerHTML = `<td>${i + 1}</td><td>${item.service}</td><td>₹${item.price}</td>`;
-        cartBody.appendChild(row);
-      });
-      document.getElementById("total").textContent = `Total: ₹${total}`;
-    }
-
-    // Handle booking form submission
-    document.getElementById("booking-form").addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      // Prepare selected services and total
-      const selectedServices = cart.map(item => `${item.service} (₹${item.price})`).join(", ");
-      const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
-
-      const form = this;
-      const params = {
-        name: form.name.value,
-        email: form.email.value,
-        phone: form.phone.value,
-        services: selectedServices,
-        total: `₹${totalAmount}`
-      };
-
-      // Send email with Email.js
-      emailjs.send("service_wmuz8ee", "template_647g5f8", params)
-        .then(function(response) {
-          document.getElementById("confirmation").style.display = "block";
-          form.reset();
-          cart = [];
-          renderCart();
-        }, function(error) {
-          alert("Failed to send email. Please try again.");
-          console.log(error);
-        });
-
-    });
-
-    // Handle newsletter subscription
-    document.getElementById("newsletter-form").addEventListener("submit", function (event) {
-      event.preventDefault();
-      alert("Thank you for subscribing to our newsletter!");
-      this.reset();
-    });
-
-    //scrolling effect
-    function scrollToBook() {
-      document.getElementById("book").scrollIntoView({ behavior: 'smooth' });
-    }
-
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href.startsWith('#')) {
-          e.preventDefault();
-          const section = document.querySelector(href);
-          if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      });
-    });
+  });
   </script>
-
 </body>
 
 </html>

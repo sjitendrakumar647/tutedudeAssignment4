@@ -1,45 +1,69 @@
-{/* <script> */}
-  let cart = [];
-  let totalPrice = 0;
+let cart = [];
+function addItem(service, price, index) {
+  cart.push({ service, price });
+  document.getElementById(`add-${index}`).style.display = "none";
+  document.getElementById(`remove-${index}`).style.display = "inline";
+  updateCart();
+}
 
-  function addItem(service, price) {
-    cart.push({ service, price });
-    totalPrice += price;
-    renderCart();
-  }
+function removeItem(service, index) {
+  cart = cart.filter((item) => item.service !== service);
+  document.getElementById(`remove-${index}`).style.display = "none";
+  document.getElementById(`add-${index}`).style.display = "inline";
+  updateCart();
+}
 
-  function removeItem(service) {
-    const index = cart.findIndex(item => item.service === service);
-    if (index !== -1) {
-      totalPrice -= cart[index].price;
-      cart.splice(index, 1);
-      renderCart();
-    }
-  }
+function updateCart() {
+  const cartBody = document.getElementById("cart-body");
+  // It clears the previous cart content before adding new rows
+  cartBody.innerHTML = "";
+  let total = 0;
 
-  function renderCart() {
-    const cartBody = document.getElementById("cart-body");
-    cartBody.innerHTML = "";
-    cart.forEach((item, index) => {
-      cartBody.innerHTML += `
-        <tr>
-          <td>${index + 1}</td>
-          <td>${item.service}</td>
-          <td>₹${item.price}</td>
-        </tr>
-      `;
-    });
-    document.getElementById("total").innerText = "Total: ₹" + totalPrice;
-  }
-
-  // Booking form submission (demo)
-  document.getElementById("booking-form").addEventListener("submit", function(event) {
-    event.preventDefault();
-    document.getElementById("confirmation").style.display = "block";
-    this.reset();
-    cart = [];
-    totalPrice = 0;
-    renderCart();
+  cart.forEach((item, i) => {
+    total += item.price;
+    const row = document.createElement("tr");
+    row.innerHTML = `<td>${i + 1}</td><td>${item.service}</td><td>₹${
+      item.price
+    }</td>`;
+    cartBody.appendChild(row);
   });
-  
-// </script>
+
+  document.getElementById("total").textContent = `Total: ₹${total}`;
+}
+
+document
+  .getElementById("booking-form")
+  .addEventListener("submit", function (e) {
+    e.preventDefault(); // Stop the page from reloading
+
+    const selectedServices = cart
+      .map((item) => `${item.service} (₹${item.price})`)
+      .join(", ");
+    const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
+
+    const params = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      phone: document.getElementById("phone").value,
+      services: selectedServices,
+      total: `₹${totalAmount}`,
+    };
+
+    emailjs
+      .send("service_wmuz8ee", "template_647g5f8", params)
+      .then(() => {
+        document.getElementById("confirmation").style.display = "block";
+        this.reset();
+        cart = [];
+        updateCart();
+      })
+      .catch(() => alert("Email failed. Try again."));
+  });
+
+document
+  .getElementById("newsletter-form")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert("Thank you for subscribing to our newsletter!");
+    this.reset();
+  });
