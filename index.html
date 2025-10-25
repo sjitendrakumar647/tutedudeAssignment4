@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Laundry Services Web App</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
     (function () {
@@ -30,7 +30,8 @@
     <div class="user">Usename</div>
   </nav>
 
-  <!-- Hero Section -->
+
+  <!-- Banner section -->
   <section class="" id="home">
     <div class="hero">
       <div class="hero-left">
@@ -228,24 +229,7 @@
     </div>
     <p>© 2025 LaundryMart. All Rights Reserved.</p>
   </footer>
-  
-  <script>
-  // --- Step 8: Smooth Scrolling ---
-  function scrollToBook() {
-    document.getElementById("book").scrollIntoView({ behavior: "smooth" });
-  }
 
-  // --- Step 9: Smooth Scroll for Navbar Links ---
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", e => {
-      const target = document.querySelector(link.getAttribute("href"));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-  });
-  </script>
 </body>
 
 </html>
