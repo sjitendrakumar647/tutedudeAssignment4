@@ -1,4 +1,6 @@
+//Here we create a cart array to store the services.
 let cart = [];
+
 function addItem(service, price, index) {
   cart.push({ service, price });
   document.getElementById(`add-${index}`).style.display = "none";
@@ -6,6 +8,7 @@ function addItem(service, price, index) {
   updateCart();
 }
 
+//This method is udes to remove the item from the cart.
 function removeItem(service, index) {
   cart = cart.filter((item) => item.service !== service);
   document.getElementById(`remove-${index}`).style.display = "none";
@@ -14,8 +17,11 @@ function removeItem(service, index) {
 }
 
 function updateCart() {
+
   const cartBody = document.getElementById("cart-body");
-  // It clears the previous cart content before adding new rows
+
+  // It clears the previous cart content before adding new rows.
+  //if we don't write this the in result shows the new list along with previously added list.
   cartBody.innerHTML = "";
   let total = 0;
 
